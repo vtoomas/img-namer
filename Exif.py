@@ -52,7 +52,7 @@ class Exif():
 
             assert self.file.read(2) == struct.pack(self.endianness + 'h', 42) # Last check if we got TIFF header read properly
 
-            self._IFDBEGIN = self._TIFFBEGIN + struct.unpack(self.endianness + 'h', self.file.read(2))[0]
+            self._IFDBEGIN = self._TIFFBEGIN + self.read_long()
             
 
     def read_all_IFD(self):
